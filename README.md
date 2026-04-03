@@ -1,5 +1,5 @@
 # swarmSETI
-Project to conduct SETI searches using observations with the LWA Swarm
+Project to conduct SETI searches using observations with the LWA Swarm. This project is an extension of a hitherto unpublished project by Savin Varghese and Tanvi Kulkarni to process Fast radio burst (FRB) observations from two LWA stations. Allowing for anti-coincidence verification of candidate detections and an exploration of the lowest frequency regime for SETI science. 
 
 # Steps for REU Student:
 1. Select a target from the list Savin provided or from what I have gathered from cross-matching NASA Exoplanets with VLASS 74 MHz sources
