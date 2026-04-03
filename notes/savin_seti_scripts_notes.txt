@@ -1,0 +1,29 @@
+Savin's Codes and what they do:
+
+upchannelize_drx_high-[freq,time].py:
+	- This is a pair of codes, where one upchannelizes the raw DRX data into either a high frequency or time resolution hdf5 file. 
+	- After writing the channelize hdf5, the file is converted from LWA hdf5 format to the blimpy hdf5 file format. Basic implementation using os, hdfWaterfall.py, and read_lwa-hdf5.py
+	- Freq: 3.0s , 2.36 Hz
+	- Time: 0.2ms, 4.83 kHz
+	
+read_lwa-hdf5.py:
+	- Takes the hdf5 file produced by hdfWaterfall.py, splits the data on a per-tuning basis, and writes it out to a new hdf5 with a different format. 
+	- This entails converting them into 'FILTERBANK' files with additional data attributes.
+	- Really does not do much with the data array from the LWA programs, but changes the names of array axes and things. 
+	
+drift_search_ind.py:
+	- Main script to process the products of read_lwa-hdf5.py using the blimpy pipeline.
+	- We will want to use bliss dedrift for this project which is the next step along the SETI path, so this is largely just a conceptual notebook. 
+	
+getinfo_from_tarball.py:
+	- simply reports the observation configuration and information about a given tarball. Pretty generic. 
+	
+collect_tarball_info.py:
+	- modified version of getinfo_from_tarball.py that instead saves it to a metadata csv file. The file 'metadata.csv' is used as a tool to drive iterative processing of the above codes. 
+
+What I need to figure out: 
+	- Is the filterbank file format to ingest with bliss the same as it was before? Should I write a new filterbank converter that could be added to commissioning? I assume filterbank is a generic format. 
+	- Where are we going to run bliss? Is this something that we try to get set-up on the cluster? An easier option would be to get connected with wherever a running bliss implementation exists, such as the berkeley data center. 
+	- What are the data products of bliss? Because we will need a program to perform anti-coincidence between each of the three stations. 
+	- Another thing that exists in Savin's workspace is several csvs of metadata from the observations. I'm not sure how much of these are used in the deployment of codes and what is just for documenting. 
+
