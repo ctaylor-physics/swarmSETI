@@ -1,6 +1,13 @@
 # swarmSETI
 Project to conduct SETI searches using observations with the LWA Swarm. This project is an extension of a hitherto unpublished project by Savin Varghese and Tanvi Kulkarni to process Fast radio burst (FRB) observations from two LWA stations. Allowing for anti-coincidence verification of candidate detections and an exploration of the lowest frequency regime for SETI science. 
 
+# Goals
+The goals of this project are as follows:
+ - Rebuild Savin's codebase into a pipeline that can injest a tarball from the interferometry pipeline that breaks observations into the necessary parts to be run with bliss, run bliss on the filterbank files, then process the hits for nti-coincidence across the three stations. The final data products are tbd, but generally should be some form of stamp file with an associated plot for visual inspection.
+ - Assemble the resulting code into a github repository
+ - Write an LWA Memo and/or a research note to summarize the project with a doi.
+ - Find Technosignatures at low frequency. 
+
 # Steps for REU Student:
 1. Select a target from the list Savin provided or from what I have gathered from cross-matching NASA Exoplanets with VLASS 74 MHz sources
    - We would like to be able to use in-beam calibration
