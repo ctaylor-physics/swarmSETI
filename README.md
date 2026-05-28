@@ -23,3 +23,39 @@ The goals of this project are as follows:
    6. Produce .png files of the hits (including all 3 stations regardless)
 5. Manually or Automated inspection of the hits to determine which are worth follow-up
 6. Attempt to determine if the signal is local in origin or a potential SETI candidate
+
+# Tentative Timeline:
+May 29
+-  LWA login credentials working
+-  Get workspace set up on hercules to do tutorials
+-  Start working on target selection (need a crash course in interferometer calibrator sources), maybe in Callingham introduction?
+-  Get TOPCAT installed to retrieve tables of sources
+
+June 5th
+-  Practice scheduling an interferometry run (~10-15 minutes, two sources?)
+-  Write own code to compare source locations
+
+June 12th - Spring Quarter ends
+-  Start working on reorganizing the codebase that Savin has created
+
+
+June 19th - Week I am gone
+-  First full testing of the pipeline w/ FRB or new data
+
+June 26th (Halfway Mark)
+-  Scheduling 8hr Observing Campaign (we could move this up). 
+-  Break up raw data into individual scans
+-  Start running reduction pipeline on data
+-  Have dat file of hits
+
+July 3rd 
+-  Do anti-coincidence comparison between three stations. 
+
+July 9
+-  Classifying candidates signals
+-  Identify best candidates for poster and make fancy plots
+	-  if no detections, work on computing a sensitivity limit. 
+
+--- GOAL July 16th (2 Weeks to go) = DONE with science
+-  finish poster (we'll have to double check what the lead time for printing is w/ Chris)
+-  Write up the work and finalize the github project page. 
