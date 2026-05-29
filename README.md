@@ -30,7 +30,7 @@ May 29
 -  Get workspace set up on hercules/cluster to do tutorials
 -  Get TOPCAT installed to retrieve tables of sources
 -  Start working on target selection (need a crash course in interferometer calibrator sources), maybe in Callingham introduction?
--  Get setup with a coding environment, such as 
+-  Get setup with a coding environment, such as VS Code or Jupyter
 
 June 5th
 -  Practice scheduling an interferometry run (~10-15 minutes, two sources?)
