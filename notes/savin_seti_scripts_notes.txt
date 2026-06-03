@@ -1,10 +1,24 @@
-Savin's Codes and what they do:
+*Notes on Savin's Codes*
+___________________________________________________________
+An example execution follows this process:  
+1. collect_tarball_info.py builds a table that contains details about the observing configuration for each FRB target and maps metadata files to the location of raw data files for code execution in the next step. 
+2. upchannelize_drx_high-freq.py calls hdfWaterfall.py (from commissioning) to upchannelize the data, then calls read_lwa-hdf5.py 
+3. drift_search_ind.py searches through the single tuning h5 files produced by upchannelize_drx_high-freq.py for technosignatures using turboseti. 
+
+Not all of the codes here are useful, but a good starting point... See below:
+getinfo_from_tarball.py:
+	- simply reports the observation configuration and information about a given tarball. This is borrowed directly from an older version of lsl with minor changes. 
+	
+collect_tarball_info.py:
+	- modified version of getinfo_from_tarball.py that instead saves it to a metadata csv file. The file 'metadata.csv' is used as a tool to drive iterative processing of the above codes. 
+	- metadata.csv, metadata_lwa1.csv, and metadata_lwa-sv.csv all appear to be made by this code. 
 
 upchannelize_drx_high-[freq,time].py:
 	- This is a pair of codes, where one upchannelizes the raw DRX data into either a high frequency or time resolution hdf5 file. 
 	- After writing the channelize hdf5, the file is converted from LWA hdf5 format to the blimpy hdf5 file format. Basic implementation using os, hdfWaterfall.py, and read_lwa-hdf5.py
 	- Freq: 3.0s , 2.36 Hz
 	- Time: 0.2ms, 4.83 kHz
+	- For this project we are going to focus on the high frequency resolution data 
 	
 read_lwa-hdf5.py:
 	- Takes the hdf5 file produced by hdfWaterfall.py, splits the data on a per-tuning basis, and writes it out to a new hdf5 with a different format. 
@@ -13,17 +27,19 @@ read_lwa-hdf5.py:
 	
 drift_search_ind.py:
 	- Main script to process the products of read_lwa-hdf5.py using the blimpy pipeline.
+	- This is an incomplete implementation so I expect that it is of little use for us. 
 	- We will want to use bliss dedrift for this project which is the next step along the SETI path, so this is largely just a conceptual notebook. 
 	
-getinfo_from_tarball.py:
-	- simply reports the observation configuration and information about a given tarball. Pretty generic. 
-	
-collect_tarball_info.py:
-	- modified version of getinfo_from_tarball.py that instead saves it to a metadata csv file. The file 'metadata.csv' is used as a tool to drive iterative processing of the above codes. 
+eyeDiagram.py:
+	- This code is directly from lsl to view snippets of data. I think this was just used for data inspection at the time, but I am not sure. 
 
-What I need to figure out: 
-	- Is the filterbank file format to ingest with bliss the same as it was before? Should I write a new filterbank converter that could be added to commissioning? I assume filterbank is a generic format. 
-	- Where are we going to run bliss? Is this something that we try to get set-up on the cluster? An easier option would be to get connected with wherever a running bliss implementation exists, such as the berkeley data center. 
-	- What are the data products of bliss? Because we will need a program to perform anti-coincidence between each of the three stations. 
-	- Another thing that exists in Savin's workspace is several csvs of metadata from the observations. I'm not sure how much of these are used in the deployment of codes and what is just for documenting. 
+generate_h5.py: 
+	- Build an artificial dataset for SETI testing that is somewhat based on the sensitivity and frequency resolution of this project. 
+	- I have used this as a guide to help build testing data for this project. 
+
+Other operations questions/answers: 
+	- Is the filterbank file format to ingest with bliss the same as it was before? The format that Savin uses is generic and acceptable 
+	- Where will we run bliss? We will run bliss on the LWA-UCF
+	- What are the data products of bliss? .dat file of hits
+	- In this Savin's workspace are several .csv files of metadata from the observations. We will want to do something similar to this, but I don't think we need ALL the information Savin preserved here. 
 
